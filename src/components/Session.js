@@ -1,20 +1,39 @@
+import { Link } from "react-router-dom"
 import styled from "styled-components"
 
-export default function Sessao({ dados }) {
+export default function Session({ dayData }) {
+
+    /*
+
+    dayData = {
+        id: Number,
+        weekday: string
+        date: string data,
+        showtimes: Lista com objs  {
+                                     name: string
+                                     id: Number 
+                                    }
+    }
+
+    */
 
 
     return (
-        <StyledSessao>
-            <p>{dados.weekday} {dados.date}</p>
+        <StyledSession>
+            <p>{dayData.weekday} {dayData.date}</p>
             <Container>
-                {dados.showtimes.map((i) => <div>{i.name}</div>)}
+                {dayData.showtimes.map((i) =>( 
+                <Link to = {`/filme-assentos/${i.id}`}>
+                <div>{i.name}</div>
+                </Link>
+                ))}
             </Container>
-        </StyledSessao>
+        </StyledSession>
     )
 };
 
 
-const StyledSessao = styled.div`
+const StyledSession = styled.div`
     width: 350px;
     height: 100px;
     

@@ -2,22 +2,37 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import styled from "styled-components"
-import Sessao from "./Sessao"
+import Session from "./Session"
 
 
-export default function Sessoes({ }) {
+export default function SessionPage({}) {
 
-    // const [sessoes, setSessoes] = useState([])
-    const [infoRodape, setInfoRodape] = useState([])
+    const [sessionData, setSessionData] = useState({})
+
+    /*
+
+    sessionData = {
+        id: Number,
+        overview: string,
+        posterURL: url,
+        releaseDate: string,
+        title: string,
+        days: Lista
+    }
+    
+    */
+
+    
+    //id = ID_DO_FILME => do obj de movieData => lista movieLista
     const {id} = useParams()
 
     useEffect(() => {
-        const pedido = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/movies/${id}/showtimes`)
+        const request = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/movies/${id}/showtimes`)
 
-        pedido.then((resposta) => {
-            setInfoRodape(resposta.data)
-            // setSessoes(resposta.data.days)
-            console.log(resposta.data)
+        request.then((answer) => {
+            setSessionData(answer.data)
+            console.log(answer.data)
+
 
         })
     }, [])
@@ -27,15 +42,15 @@ export default function Sessoes({ }) {
 
         <StyledScreen>
             <p>Selecione o horário</p>
-            <StyledContainerSessoes>
-                {infoRodape.days !== undefined && infoRodape.days.map((i, idx) => <Sessao key={i.id} dados={i} />)}
-            </StyledContainerSessoes>
-            <Rodape>
+            <StyledContainerSessions>
+                {sessionData.days !== undefined && sessionData.days.map((i, idx) => <Session key={i.id} dayData={i} />)}
+            </StyledContainerSessions>
+            <StyledFooter>
                 <div>
-                    <img src={infoRodape.posterURL}></img>
+                    <img src={sessionData.posterURL}></img>
                 </div>
-                <p>{infoRodape.title}</p>
-            </Rodape>
+                <p>{sessionData.title}</p>
+            </StyledFooter>
         </StyledScreen>
     )
 };
@@ -52,7 +67,7 @@ align-items: center;
 
 
 p{
-    font-family: 'Roboto';
+    font-family: 'Roboto', sans-serif;
 font-style: normal;
 font-weight: 400;
 font-size: 24px;
@@ -67,11 +82,11 @@ color: #293845;
 
 `
 
-const StyledContainerSessoes = styled.div`
+const StyledContainerSessions = styled.div`
 width: 100%;
 `
 
-const Rodape = styled.footer`
+const StyledFooter = styled.footer`
 position: fixed;
 width: 100%;
 height: 117px;

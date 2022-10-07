@@ -1,17 +1,18 @@
 import styled from "styled-components"
 import axios from 'axios';
 import { useEffect, useState } from "react";
-import Filme from "./Filme";
+import Movie from "./Movie";
 
-export default function Home() {
+export default function HomePage() {
 
-    const [filmes, setFilmes] = useState([])
+    const [moviesList, setMoviesList] = useState([])
 
     useEffect(() => {
-        const pedido = axios.get("https://mock-api.driven.com.br/api/v5/cineflex/movies")
+        const request = axios.get("https://mock-api.driven.com.br/api/v5/cineflex/movies")
 
-        pedido.then((resposta) => {
-            setFilmes(resposta.data)
+        request.then((answer) => {
+            setMoviesList(answer.data)
+            console.log(answer.data)
 
         })
     }, [])
@@ -20,9 +21,9 @@ export default function Home() {
     return (
         <StyledScreen>
             <p>Selecione o filme</p>
-            <StyledContainerFilme>
-                {filmes.map((i) => <Filme key={i.id} dados={i} />)}
-            </StyledContainerFilme>
+            <StyledContainerMovie>
+                {moviesList.map((i) => <Movie key={i.id} movieData={i} />)}
+            </StyledContainerMovie>
         </StyledScreen>
     )
 };
@@ -52,7 +53,7 @@ color: #293845;
 }
 `
 
-const StyledContainerFilme = styled.div`
+const StyledContainerMovie = styled.div`
 width: 100%;
 
 display: flex;

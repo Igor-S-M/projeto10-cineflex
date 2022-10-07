@@ -1,22 +1,35 @@
 import { Link } from "react-router-dom"
 import styled from "styled-components"
 
-export default function Filme({ dados }) {
+export default function Movie({ movieData }) {
+
+
+    /*
+
+    movieData = {
+        id: Number,
+        overview: string
+        title: string,
+        releaseDate: string data
+        posterURL: url
+    }
+
+    */
 
 
     return (
-        <StyledFilme>
+        <StyledMovie>
             <div>
-                <Link to={`/filme-sessoes/${dados.id}`}>
-                    <img src={dados.posterURL} alt={dados.name}></img>
+                <Link to={`/filme-sessoes/${movieData.id}`}>
+                    <img src={movieData.posterURL} alt={movieData.title}></img>
                 </Link>
             </div>
-        </StyledFilme>
+        </StyledMovie>
     )
 };
 
 
-const StyledFilme = styled.div`
+const StyledMovie = styled.div`
 div{
     width: 145px;
     height: 209px;
