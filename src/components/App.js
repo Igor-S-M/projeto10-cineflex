@@ -18,15 +18,26 @@ export default function App() {
     return (
 
         <BrowserRouter>
-        <Header/>
-        <Routes>
-            <Route path="/" element={<HomePage />} /> 
-            <Route path="/sessoes/:id" element={<SessionPage/>}/>
-            <Route path="/assentos/:horario" element={<SeatsPage seatsData={seatsData} setSeatsData={setSeatsData} name={name} setName={setName} cpf={cpf} setCpf={setCpf} chosenList={chosenList} setChosenList={setChosenList}/>}/>
-            <Route path="/sucesso" element={<EndPage seatsData={seatsData} name={name} cpf={cpf} chosenList={chosenList}/>}/>
-            
-        </Routes>
-    </BrowserRouter>
+            <Header />
+            <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/sessoes/:id" element={<SessionPage />} />
+                <Route path="/assentos/:horario"
+                    element={<SeatsPage seatsData={seatsData}
+                        setSeatsData={setSeatsData}
+                        name={name}
+                        setName={setName}
+                        cpf={cpf}
+                        setCpf={setCpf}
+                        chosenList={chosenList}
+                        setChosenList={setChosenList} />} />
+                <Route path="/sucesso"
+                    element={<EndPage seatsData={seatsData}
+                        name={name}
+                        cpf={cpf}
+                        chosenList={chosenList} />} />
+            </Routes>
+        </BrowserRouter>
     )
 };
 

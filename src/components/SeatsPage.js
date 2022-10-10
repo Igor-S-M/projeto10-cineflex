@@ -140,8 +140,6 @@ box-sizing: border-box;
 width: 25px;
 height: 25px;
 
-background: #1AAE9E;
-border: 1px solid #0E7D71;
 border-radius: 17px
 }
 
