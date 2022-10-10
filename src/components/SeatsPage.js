@@ -5,10 +5,7 @@ import styled from "styled-components"
 import Seat from "./Seat"
 import PersonalInfo from "./PersonalInfo"
 
-export default function Seats() {
-
-    const [seatsData, setSeatsData] = useState([])
-    const [chosenList, setChosenList] = useState([])
+export default function SeatsPage({seatsData, setSeatsData, chosenList, setChosenList, name, setName, cpf, setCpf}) {
 
 
     const { horario } = useParams()
@@ -39,7 +36,7 @@ export default function Seats() {
         })
     }, [])
 
-    console.log(chosenList)
+    // console.log(chosenList)
 
     return (
         <StyledScreen>
@@ -66,7 +63,7 @@ export default function Seats() {
                 </div>
             </StyledLegenda>
 
-            <PersonalInfo chosenList={chosenList}/>
+            <PersonalInfo chosenList={chosenList} name={name} setName={setName} setCpf={setCpf} cpf={cpf}/>
 
 
             <StyledFooter>

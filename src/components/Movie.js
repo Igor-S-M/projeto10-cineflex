@@ -20,7 +20,7 @@ export default function Movie({ movieData }) {
     return (
         <StyledMovie>
             <div>
-                <Link to={`/filme-sessoes/${movieData.id}`}>
+                <Link to={`/sessoes/${movieData.id}`}>
                     <img src={movieData.posterURL} alt={movieData.title}></img>
                 </Link>
             </div>

@@ -1,30 +1,33 @@
 import axios from "axios"
 import { useState } from "react"
+import { Link } from "react-router-dom"
 import styled from "styled-components"
 
-export default function PersonalInfo({chosenList}) {
+export default function PersonalInfo({ chosenList , name, setName, cpf, setCpf}) {
 
-    const [name, setName] = useState("")
-    const [cpf, setCpf] = useState(0)
 
-    function completForm(e){
+    function completForm(e) {
+
+        console.log("completForm acionado")
         e.preventDefault()
 
-        
+
         const URL = "https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many"
 
         const body = {
-            ids : [...chosenList],
+            ids: [...chosenList],
             name: name,
             cpf: cpf
         }
-        
+
+        console.log(body)
+        /*
         const promise = axios.post(URL,body)
     
         promise.then(()=>alert("deu bom"))
 
         promise.catch((err)=>alert("voce errou algo"))
-    
+    */
     }
 
     return (
@@ -36,7 +39,7 @@ export default function PersonalInfo({chosenList}) {
                         <input id="name"
                             type="text"
                             value={name}
-                            onChange={e=>setName(e.target.value)}
+                            onChange={e => setName(e.target.value)}
                             required
                             placeholder="Digite seu nome..." />
                     </div>
@@ -46,13 +49,15 @@ export default function PersonalInfo({chosenList}) {
                             id="cpf"
                             type="number"
                             value={cpf}
-                            onChange={e=>setCpf(e.target.value)}
+                            onChange={e => setCpf(e.target.value)}
                             required
                             placeholder="Digite seu CPF..." />
                     </div>
-                    <button type="submit">
-                        Reservar assento(s)
-                    </button>
+                    <Link to="/sucesso">
+                        <button type="submit">
+                            Reservar assento(s)
+                        </button>
+                    </Link>
                 </form>
             </StyledPersonalInfo>
 
