@@ -23,7 +23,7 @@ export default function Session({ dayData }) {
             <p>{dayData.weekday} {dayData.date}</p>
             <Container>
                 {dayData.showtimes.map((i) =>( 
-                <Link to = {`/filme-assentos/${i.id}`}>
+                <Link to = {`/filme-assentos/${i.id}`} key={i.id}>
                 <div>{i.name}</div>
                 </Link>
                 ))}

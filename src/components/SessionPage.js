@@ -5,7 +5,7 @@ import styled from "styled-components"
 import Session from "./Session"
 
 
-export default function SessionPage({}) {
+export default function SessionPage() {
 
     const [sessionData, setSessionData] = useState({})
 
@@ -47,7 +47,7 @@ export default function SessionPage({}) {
             </StyledContainerSessions>
             <StyledFooter>
                 <div>
-                    <img src={sessionData.posterURL}></img>
+                    <img src={sessionData.posterURL} alt="imagem-filme"></img>
                 </div>
                 <p>{sessionData.title}</p>
             </StyledFooter>
