@@ -1,10 +1,15 @@
-import { Link, Navigate, useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import styled from "styled-components"
 
 export default function EndPage({seatsData,chosenList,setChosenList, name, cpf}) {
     
-    console.log(seatsData)
-    const sortedChosenList = [...chosenList].sort((a,b)=> a-b) 
+
+    const numbersChosenList = []
+    seatsData.seats.map((i,idx)=>chosenList.includes(i.id)? numbersChosenList.push(i.name): null)
+       
+
+
+    const sortedChosenList = [...numbersChosenList].sort((a,b)=> a-b) 
     let navigate = useNavigate()
 
     function voltarHome(e){
@@ -25,7 +30,7 @@ export default function EndPage({seatsData,chosenList,setChosenList, name, cpf})
             </div>
             <div className="ingresso">
                 <h2>Ingressos</h2>
-                {sortedChosenList.map((i)=><p>{`Assento ${i}`}</p>)}
+                {sortedChosenList.map((i,idx)=><p key={idx}>{`Assento ${i}`}</p>)}
             </div>
             <div className="informacoes">
                 <h2>Comprador</h2>
@@ -52,7 +57,8 @@ justify-content: center;
 align-items: center;
 
 p{
-    font-family: 'Roboto', sans-serif;
+width: 180px;
+font-family: 'Roboto', sans-serif;
 
 font-style: normal;
 font-weight: 700;
@@ -60,22 +66,23 @@ font-size: 24px;
 line-height: 28px;
 display: flex;
 align-items: center;
-text-align: center;
+text-align: start;
 letter-spacing: 0.04em;
 
 color: #247A6B;
 }
 
 div{
-    box-sizing: border-box;
+box-sizing: border-box;
+width: 100%;
+margin: 12px;
+margin-left: 28px;
 
-    width: 100%;
+h2{
+margin: 0px;
 
-    margin: 6px;
-
-    h2{
-        margin: 0px;
-        font-family: 'Roboto';
+margin-bottom: 6px;
+font-family: 'Roboto';
 font-style: normal;
 font-weight: 700;
 font-size: 24px;
@@ -85,11 +92,11 @@ align-items: center;
 letter-spacing: 0.04em;
 
 color: #293845;
-    }
-
-    p{
-        margin: 0px;
-        font-family: 'Roboto';
+}
+p{
+width: 100%;
+margin: 2px;
+font-family: 'Roboto';
 font-style: normal;
 font-weight: 400;
 font-size: 22px;

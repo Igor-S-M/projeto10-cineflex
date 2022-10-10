@@ -25,12 +25,9 @@ export default function PersonalInfo({ chosenList, name, setName, cpf, setCpf })
 
         const promise = axios.post(URL, body)
 
-        promise.then(() => {
-            alert("deu bom");
-            console.log(body);
-        });
+        promise.then(() => console.log("Post feito com sucesso!"));
 
-        promise.catch((err) => alert("voce errou algo"))
+        promise.catch((err) => alert("Post não feito devido a um erro"))
 
         navigate("/sucesso")
 
@@ -77,7 +74,11 @@ width: 100%;
 display: flex;
 flex-direction: column;
 
-align-items: center;
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 div{
     margin: 7px;

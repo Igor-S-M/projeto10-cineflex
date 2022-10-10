@@ -10,33 +10,15 @@ export default function SeatsPage({seatsData, setSeatsData, chosenList, setChose
 
     const { horario } = useParams()
 
-    /*
-
-    seatsData = {
-        id: Number,
-        name: string - horas que comeca,
-        day: {dayData - [showtimes]}
-        movie: {movieData}
-        seats: lista de objs seat{
-                                    id: Number
-                                    name: numero do assento
-                                    isAvailable: boolean
-                                }
-    }
-
-    */
 
     useEffect(() => {
         const pedido = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${horario}/seats`)
 
         pedido.then((resposta) => {
             setSeatsData(resposta.data)
-
-            console.log(resposta.data)
         })
     }, [])
 
-    console.log("SeatsPage:",chosenList)
 
     return (
         <StyledScreen>
@@ -211,11 +193,11 @@ height: 72px;
 
 .slot-texto{
 
-    width: 287px;
-    height: 119px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+width: 287px;
+height: 119px;
+display: flex;
+flex-direction: column;
+justify-content: center;
 
 p{
 font-family: 'Roboto', sans-serif;
@@ -225,7 +207,7 @@ font-size: 26px;
 line-height: 30px;
 display: flex;
 align-items: center;
-
+text-align: start;
 margin:0px;
 
 color: #293845;

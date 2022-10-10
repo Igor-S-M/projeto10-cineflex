@@ -24,7 +24,7 @@ top: 0px;
 background: #C3CFD9;
 
 p{
-    font-family: 'Roboto';
+font-family: 'Roboto', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 34px;

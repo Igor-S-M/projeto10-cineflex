@@ -12,7 +12,6 @@ export default function HomePage() {
 
         promise.then((answer) => {
             setMoviesList(answer.data)
-            console.log(answer.data)
         })
 
     }, [])
@@ -39,7 +38,7 @@ justify-content: center;
 align-items: center;
 
 p{
-    font-family: 'Roboto';
+font-family: 'Roboto', sans-serif;
 font-style: normal;
 font-weight: 400;
 font-size: 24px;

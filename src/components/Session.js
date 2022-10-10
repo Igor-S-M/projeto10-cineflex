@@ -3,20 +3,6 @@ import styled from "styled-components"
 
 export default function Session({ dayData }) {
 
-    /*
-
-    dayData = {
-        id: Number,
-        weekday: string
-        date: string data,
-        showtimes: Lista com objs  {
-                                     name: string
-                                     id: Number 
-                                    }
-    }
-
-    */
-
 
     return (
         <StyledSession>
@@ -42,7 +28,7 @@ const StyledSession = styled.div`
 
 
     p{
-    font-family: 'Roboto';
+        font-family: 'Roboto', sans-serif;
 font-style: normal;
 font-weight: 400;
 font-size: 20px;

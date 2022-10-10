@@ -44,7 +44,7 @@ export default function Seat({ data, chosenList, setChosenList }) {
             <button className={`${chosenList.includes(Number(data.id)) ? 
             "selecionado" : 
             data.isAvailable ? "disponivel" : "indisponivel"}`}
-                onClick={() => clickSeat(Number(data.id), data.isAvailable)}>
+                onClick={() => clickSeat(Number(data.id),data.isAvailable)}>
                 {data.name}
             </button>
         </StyleButton>

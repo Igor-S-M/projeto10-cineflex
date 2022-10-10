@@ -8,22 +8,7 @@ import Session from "./Session"
 export default function SessionPage() {
 
     const [sessionData, setSessionData] = useState({})
-
-    /*
-
-    sessionData = {
-        id: Number,
-        overview: string,
-        posterURL: url,
-        releaseDate: string,
-        title: string,
-        days: Lista
-    }
-    
-    */
-
-    
-    //id = ID_DO_FILME => do obj de movieData => lista movieLista
+   
     const {id} = useParams()
 
     useEffect(() => {
@@ -31,8 +16,6 @@ export default function SessionPage() {
 
         request.then((answer) => {
             setSessionData(answer.data)
-            console.log(answer.data)
-
 
         })
     }, [])
@@ -58,6 +41,7 @@ export default function SessionPage() {
 
 const StyledScreen = styled.main`
 margin-top: 67px;
+margin-bottom: 117px;
 width: 100%;
 
 display: flex;

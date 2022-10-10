@@ -4,19 +4,6 @@ import styled from "styled-components"
 export default function Movie({ movieData }) {
 
 
-    /*
-
-    movieData = {
-        id: Number,
-        overview: string
-        title: string,
-        releaseDate: string data
-        posterURL: url
-    }
-
-    */
-
-
     return (
         <StyledMovie>
             <div>
