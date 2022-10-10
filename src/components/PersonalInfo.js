@@ -1,16 +1,16 @@
 import axios from "axios"
-import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components"
 
-export default function PersonalInfo({ chosenList , name, setName, cpf, setCpf}) {
+export default function PersonalInfo({ chosenList, name, setName, cpf, setCpf }) {
 
-    console.log("PI:", chosenList)
 
+    let navigate = useNavigate()
 
     function completForm(e) {
 
-        console.log("completForm acionado")
         e.preventDefault()
+        e.stopPropagation()
 
 
         const URL = "https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many"
@@ -21,13 +21,18 @@ export default function PersonalInfo({ chosenList , name, setName, cpf, setCpf})
             cpf: cpf
         }
 
-        console.log(body)
 
-        const promise = axios.post(URL,body)
 
-        promise.then(()=>alert("deu bom"))
+        const promise = axios.post(URL, body)
 
-        promise.catch((err)=>alert("voce errou algo"))
+        promise.then(() => {
+            alert("deu bom");
+            console.log(body);
+        });
+
+        promise.catch((err) => alert("voce errou algo"))
+
+        navigate("/sucesso")
 
     }
 
@@ -54,11 +59,11 @@ export default function PersonalInfo({ chosenList , name, setName, cpf, setCpf})
                             required
                             placeholder="Digite seu CPF..." />
                     </div>
-                    <Link to="/sucesso">
-                        <button type="submit">
-                            Reservar assento(s)
-                        </button>
-                    </Link>
+
+                    <button type="submit">
+                        Reservar assento(s)
+                    </button>
+
                 </form>
             </StyledPersonalInfo>
 

@@ -1,14 +1,19 @@
-import { Link } from "react-router-dom"
+import { Link, Navigate, useNavigate } from "react-router-dom"
 import styled from "styled-components"
 
-export default function EndPage({seatsData,chosenList, name, cpf}) {
+export default function EndPage({seatsData,chosenList,setChosenList, name, cpf}) {
     
     console.log(seatsData)
-    const sortedChosenList = [...chosenList].sort((a,b)=>{
-                                                            if(a>b) return 1;
-                                                            if(a<b) return -1;
-                                                            return 0                                   
-                                                         }) 
+    const sortedChosenList = [...chosenList].sort((a,b)=> a-b) 
+    let navigate = useNavigate()
+
+    function voltarHome(e){
+        e.preventDefault()
+        e.stopPropagation()
+
+        setChosenList([])
+        navigate("/")
+    }
 
     return (
         <StyledScreen>
@@ -28,7 +33,7 @@ export default function EndPage({seatsData,chosenList, name, cpf}) {
                 <p>{cpf}</p>
             </div>
             <Link to="/">
-                <button>
+                <button onClick={voltarHome}>
                     <p>Voltar para Home</p>
                 </button>
             </Link>

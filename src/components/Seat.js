@@ -3,10 +3,9 @@ import styled from "styled-components";
 
 export default function Seat({ data, chosenList, setChosenList }) {
 
-    console.log("seat",chosenList)
 
     function clickSeat(numero, flag) {
-        console.log("clickSeat acionado", numero)
+
 
         if (flag === false) {
 
@@ -15,12 +14,11 @@ export default function Seat({ data, chosenList, setChosenList }) {
         } else {
             if (!chosenList.includes(numero)) {
 
-                console.log("add")
+
                 addChosenList(numero)
 
             } else {
 
-                console.log("rmv")
                 removeChosenList(numero)
             }
         }
@@ -43,10 +41,10 @@ export default function Seat({ data, chosenList, setChosenList }) {
     return (
 
         <StyleButton >
-            <button className={`${chosenList.includes(Number(data.name)) ? 
+            <button className={`${chosenList.includes(Number(data.id)) ? 
             "selecionado" : 
             data.isAvailable ? "disponivel" : "indisponivel"}`}
-                onClick={() => clickSeat(Number(data.name), data.isAvailable)}>
+                onClick={() => clickSeat(Number(data.id), data.isAvailable)}>
                 {data.name}
             </button>
         </StyleButton>

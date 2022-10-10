@@ -35,7 +35,8 @@ export default function App() {
                     element={<EndPage seatsData={seatsData}
                         name={name}
                         cpf={cpf}
-                        chosenList={chosenList} />} />
+                        chosenList={chosenList}
+                        setChosenList={setChosenList} />} />
             </Routes>
         </BrowserRouter>
     )

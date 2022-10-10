@@ -63,7 +63,7 @@ export default function SeatsPage({seatsData, setSeatsData, chosenList, setChose
                 </div>
             </StyledLegenda>
 
-            <PersonalInfo chosenList={chosenList} name={name} setName={setName} setCpf={setCpf} cpf={cpf}/>
+            <PersonalInfo  chosenList={chosenList} name={name} setName={setName} setCpf={setCpf} cpf={cpf}/>
 
 
             <StyledFooter>
