@@ -1,5 +1,5 @@
 import axios from "axios"
-import { useEffect, useState } from "react"
+import { useEffect} from "react"
 import { useParams } from "react-router-dom"
 import styled from "styled-components"
 import Seat from "./Seat"
@@ -36,7 +36,7 @@ export default function SeatsPage({seatsData, setSeatsData, chosenList, setChose
         })
     }, [])
 
-    // console.log(chosenList)
+    console.log("SeatsPage:",chosenList)
 
     return (
         <StyledScreen>

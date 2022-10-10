@@ -3,21 +3,24 @@ import styled from "styled-components";
 
 export default function Seat({ data, chosenList, setChosenList }) {
 
-    const [chosen, setChosen] = useState(false)
+    console.log("seat",chosenList)
 
     function clickSeat(numero, flag) {
         console.log("clickSeat acionado", numero)
 
         if (flag === false) {
+
             alert("Esse assento não está disponível")
+
         } else {
-            if (chosen === false) {
-                setChosen(true)
+            if (!chosenList.includes(numero)) {
 
+                console.log("add")
                 addChosenList(numero)
-            } else {
-                setChosen(false)
 
+            } else {
+
+                console.log("rmv")
                 removeChosenList(numero)
             }
         }
@@ -25,14 +28,14 @@ export default function Seat({ data, chosenList, setChosenList }) {
 
     function addChosenList(numero) {
         const novoEstado = [...chosenList]
-        novoEstado.push(Number(numero))
+        novoEstado.push(numero)
         setChosenList(novoEstado)
     }
 
     function removeChosenList(numero) {
 
         const EstadoAtual = [...chosenList]
-        const novoEstado = EstadoAtual.filter((i) =>  i !== numero )
+        const novoEstado = EstadoAtual.filter((i) => i !== numero)
         setChosenList(novoEstado)
     }
 
@@ -40,8 +43,10 @@ export default function Seat({ data, chosenList, setChosenList }) {
     return (
 
         <StyleButton >
-            <button className={`${chosen ? "selecionado" : data.isAvailable ? "disponivel" : "indisponivel"}`}
-                onClick={() => clickSeat(data.name, data.isAvailable)}>
+            <button className={`${chosenList.includes(Number(data.name)) ? 
+            "selecionado" : 
+            data.isAvailable ? "disponivel" : "indisponivel"}`}
+                onClick={() => clickSeat(Number(data.name), data.isAvailable)}>
                 {data.name}
             </button>
         </StyleButton>

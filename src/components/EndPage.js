@@ -4,6 +4,11 @@ import styled from "styled-components"
 export default function EndPage({seatsData,chosenList, name, cpf}) {
     
     console.log(seatsData)
+    const sortedChosenList = [...chosenList].sort((a,b)=>{
+                                                            if(a>b) return 1;
+                                                            if(a<b) return -1;
+                                                            return 0                                   
+                                                         }) 
 
     return (
         <StyledScreen>
@@ -15,7 +20,7 @@ export default function EndPage({seatsData,chosenList, name, cpf}) {
             </div>
             <div className="ingresso">
                 <h2>Ingressos</h2>
-                {chosenList.map((i)=><p>{`Assento ${i}`}</p>)}
+                {sortedChosenList.map((i)=><p>{`Assento ${i}`}</p>)}
             </div>
             <div className="informacoes">
                 <h2>Comprador</h2>

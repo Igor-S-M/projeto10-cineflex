@@ -1,9 +1,10 @@
 import axios from "axios"
-import { useState } from "react"
 import { Link } from "react-router-dom"
 import styled from "styled-components"
 
 export default function PersonalInfo({ chosenList , name, setName, cpf, setCpf}) {
+
+    console.log("PI:", chosenList)
 
 
     function completForm(e) {
@@ -21,13 +22,13 @@ export default function PersonalInfo({ chosenList , name, setName, cpf, setCpf})
         }
 
         console.log(body)
-        /*
+
         const promise = axios.post(URL,body)
-    
+
         promise.then(()=>alert("deu bom"))
 
         promise.catch((err)=>alert("voce errou algo"))
-    */
+
     }
 
     return (
